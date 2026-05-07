@@ -37,3 +37,11 @@ To prevent execution errors and protect system resources, the program enforces t
 5. Header Handling: The program is designed to automatically detect and skip the first row if it contains headers (e.g., ad_id, bid).
 6. Strict Positioning: Data must strictly follow the two-column format; any additional columns are ignored, and rows with missing columns are skipped to maintain data integrity.
 7. Safety: If any of these conditions are not met, the program will terminate early with a descriptive error message rather than attempting to parse invalid data.
+
+## Performance & Scalability (Handling 10,000+ Rows)
+
+The project requirements specify that the solution must handle files with up to 10,000 rows. To address this, my solution implements:
+
+* **Memory-Efficient Streaming**: Using PHP `Generators` (`yield`), the CSV file is streamed line-by-line. Instead of loading 10,000 rows into RAM simultaneously (which would cause high memory usage), only a single row resides in memory at any given second.
+* **Time Complexity**: The auction processor determines the winner and the second-highest bid in a single pass (one loop) through the data. It does not sort the entire array, keeping execution times incredibly fast and stable regardless of dataset size.
+* **Constant Space Complexity**: Memory consumption remains flat, whether processing a file with 10 rows or 10,000+ rows.
