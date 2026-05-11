@@ -71,7 +71,7 @@ class AuctionProcessorTest extends BaseTest
 
     private function testBidsWithSamePriceFirstShouldWin(): void {
         $this->assertEquals(
-            "(testBidsWithSamePriceFirstShouldWin) When 2 bids with same price, first should win",
+            "(testBidsWithSamePriceFirstShouldWin) When there are 2 bids with same price, first one should win",
             ['1', 10],
             function() {
                 return $this->auctionProcessor->getAuctionWinnerAndSecondHighestBid([
@@ -95,7 +95,7 @@ class AuctionProcessorTest extends BaseTest
 
     private function testIfOnlyOneBidExistItShouldWin(): void {
         $this->assertEquals(
-            "(testIfOnlyOneBidExistItShouldWin) When only 1 bid, this bid should win",
+            "(testIfOnlyOneBidExistItShouldWin) When there is only 1 bid, this bid should win",
             ['1', 10],
             function() {
                 return $this->auctionProcessor->getAuctionWinnerAndSecondHighestBid([
@@ -107,7 +107,7 @@ class AuctionProcessorTest extends BaseTest
 
     private function testOnlyBidsWithSamePriceFirstShouldWin(): void {
         $this->assertEquals(
-            "(testOnlyBidsWithSamePriceFirstShouldWin) When only bids with same price, first bid should win",
+            "(testOnlyBidsWithSamePriceFirstShouldWin) When all bids are with same price, first bid should win",
             ['1', 10],
             function() {
                 return $this->auctionProcessor->getAuctionWinnerAndSecondHighestBid([
